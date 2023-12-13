@@ -6,8 +6,10 @@ public class LightSwitch : InteractableBase
 {
     [SerializeField] private GameObject switchOn;
     [SerializeField] private GameObject switchOff;
-    [SerializeField] private GameObject lightToToggle;
+    [SerializeField] private GameObject bulbOn;
+    [SerializeField] private GameObject bulbOff;
     [SerializeField] private bool isOn;
+    [SerializeField] private bool isBroken;
 
     // Start is called before the first frame update
     void Start()
@@ -23,20 +25,41 @@ public class LightSwitch : InteractableBase
 
     public override void OnInteract()
     {
-        switch (isOn)
+        if (!isBroken)
         {
-            case true:
-                switchOn.SetActive(false);
-                switchOff.SetActive(true);
-                lightToToggle.SetActive(false);
-                isOn = false;
-                break;
-            case false:
-                switchOn.SetActive(true);
-                switchOff.SetActive(false);
-                lightToToggle.SetActive(true);
-                isOn = true;
-                break;
+            switch (isOn)
+            {
+                case true:
+                    switchOn.SetActive(false);
+                    switchOff.SetActive(true);
+                    bulbOff.SetActive(true);
+                    bulbOn.SetActive(false);
+                    isOn = false;
+                    break;
+                case false:
+                    switchOn.SetActive(true);
+                    switchOff.SetActive(false);
+                    bulbOff.SetActive(false);
+                    bulbOn.SetActive(true);
+                    isOn = true;
+                    break;
+            }
+        }
+        else
+        {
+            switch (isOn)
+            {
+                case true:
+                    switchOn.SetActive(false);
+                    switchOff.SetActive(true);
+                    isOn = false;
+                    break;
+                case false:
+                    switchOn.SetActive(true);
+                    switchOff.SetActive(false);
+                    isOn = true;
+                    break;
+            }
         }
     }
 }
