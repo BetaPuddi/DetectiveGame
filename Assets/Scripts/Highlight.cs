@@ -11,6 +11,8 @@ public class Highlight : MonoBehaviour
     private Transform rayCastOrigin;
     private Transform previouslyHitObject;
 
+    public InteractableBase interactable;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -30,19 +32,15 @@ public class Highlight : MonoBehaviour
         if (Physics.Raycast(rayCastOrigin.position, transform.TransformDirection(Vector3.forward), out hit, lengthOfRay, interactableLayer))
         {
             Debug.DrawRay(rayCastOrigin.position, transform.TransformDirection(Vector3.forward) * hit.distance, Color.green);
-
-
-            if (previouslyHitObject != null)
-            {
-                //previouslyHitObject.transform.GetComponent<MeshRenderer>().material.color = Color.white;
-            }
-            //hit.transform.GetComponent<MeshRenderer>().material.color = Color.green;
             print("Hit: " + hit.transform.name);
             previouslyHitObject = hit.transform;
+            interactable = previouslyHitObject.GetComponent<InteractableBase>();
         }
-        else if (previouslyHitObject != null)
+        else //if (hit.transform.gameObject.layer != interactableLayer)
         {
             //previouslyHitObject.GetComponent<MeshRenderer>().material.color = Color.white;
+            previouslyHitObject = null;
+            interactable = null;
         }
     }
 }
