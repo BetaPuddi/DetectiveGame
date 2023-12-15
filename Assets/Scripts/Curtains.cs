@@ -11,10 +11,20 @@ public class Curtains : InteractableBase
         if (right)
         {
             GetComponent<Animator>().SetTrigger("OpenR");
+            used = true;
         }
         else
         {
             GetComponent<Animator>().SetTrigger("OpenL");
+            used = true;
+        }
+    }
+
+    public override void OnInspect()
+    {
+        if (!used)
+        {
+            InteractText.instance.SetText("Press E to open curtains");
         }
     }
 }

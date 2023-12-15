@@ -8,13 +8,23 @@ public class Tap : InteractableBase
 
     public override void OnInteract()
     {
-        water.Play();
-        StartCoroutine(Wait());
+        if (!used)
+        {
+            water.Play();
+            StartCoroutine(Wait());
+        }
+    }
+
+    public override void OnInspect()
+    {
+        InteractText.instance.SetText("Press E to turn on tap");
+        used = true;
     }
 
     IEnumerator Wait()
     {
         yield return new WaitForSeconds(3);
         water.Stop();
+        used = false;
     }
 }

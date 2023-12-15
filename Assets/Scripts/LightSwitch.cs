@@ -11,18 +11,6 @@ public class LightSwitch : InteractableBase
     [SerializeField] private bool isOn;
     [SerializeField] private bool isBroken;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public override void OnInteract()
     {
         if (!isBroken)
@@ -60,6 +48,18 @@ public class LightSwitch : InteractableBase
                     isOn = true;
                     break;
             }
+        }
+    }
+
+    public override void OnInspect()
+    {
+        if (isOn)
+        {
+            InteractText.instance.SetText("Press E to turn light switch off");
+        }
+        else
+        {
+            InteractText.instance.SetText("Press E to turn light switch on");
         }
     }
 }

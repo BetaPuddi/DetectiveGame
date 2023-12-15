@@ -4,5 +4,7 @@ using UnityEngine;
 
 public abstract class InteractableBase : MonoBehaviour
 {
+    public bool used;
     public abstract void OnInteract();
+    public abstract void OnInspect();
 }
