@@ -7,5 +7,14 @@ public class Door : InteractableBase
     public override void OnInteract()
     {
         GetComponent<Animator>().SetTrigger("Open");
+        used = true;
+    }
+
+    public override void OnInspect()
+    {
+        if (!used)
+        {
+            InteractText.instance.SetText("Press E to open door");
+        }
     }
 }
