@@ -11,6 +11,7 @@ public class Tap : InteractableBase
         if (!used)
         {
             water.Play();
+            used = true;
             StartCoroutine(Wait());
         }
     }
@@ -18,7 +19,6 @@ public class Tap : InteractableBase
     public override void OnInspect()
     {
         InteractText.instance.SetText("Press E to turn on tap");
-        used = true;
     }
 
     IEnumerator Wait()
