@@ -204,5 +204,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 881fb12955676684fa48b3234264ff3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nameText: {fileID: 0}
-  descriptionText: {fileID: 0}
+  nameTextTMP: {fileID: 1903115615728961440}
+  descriptionTextTMP: {fileID: 0}
+  nameText: ID
+  descriptionText: This ID looks like like police issued identification

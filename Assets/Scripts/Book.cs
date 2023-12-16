@@ -14,7 +14,8 @@ public class Book : InteractableBase
     {
         if (!used)
         {
-            InteractText.instance.SetText("Press E to read book");
+            inspectText = "Press E to read book";
+            InteractText.instance.SetText(inspectText);
         }
     }
 

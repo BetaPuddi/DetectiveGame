@@ -9,21 +9,31 @@ public class Clue : InteractableBase
     public override void OnInteract()
     {
         AddClue();
-        gameObject.SetActive(false);
+        used = true;
+        //gameObject.SetActive(false);
     }
 
     public override void OnInspect()
     {
-        throw new System.NotImplementedException();
+        if (!used)
+        {
+            InteractText.instance.SetText(inspectText);
+        }
     }
 
     public override void Think()
     {
-        throw new System.NotImplementedException();
+        if (!used)
+        {
+            ThoughtText.instance.SetText(thought);
+        }
     }
 
     private void AddClue()
     {
-        ClueMenu.instance.CreateClueEntry(clueName, clueDescription);
+        if (!used)
+        {
+            ClueMenu.instance.CreateClueEntry(clueName, clueDescription);
+        }
     }
 }

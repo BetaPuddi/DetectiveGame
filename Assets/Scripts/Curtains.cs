@@ -24,7 +24,8 @@ public class Curtains : InteractableBase
     {
         if (!used)
         {
-            InteractText.instance.SetText("Press E to open curtains");
+            inspectText = "Press E to open curtains";
+            InteractText.instance.SetText(inspectText);
         }
     }
 

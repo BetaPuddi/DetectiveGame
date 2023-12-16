@@ -2,17 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using Unity.VisualScripting;
+using UnityEngine.UI;
 
 public class ClueMenu : MonoBehaviour
 {
-    [SerializeField] private GameObject clueMenu, playerRef, clueList;
+    [SerializeField] private GameObject clueMenu, clueList, clueEntryPrefab, menuChecker;
     [SerializeField] private TextMeshProUGUI clueDescriptionText;
+    private RectMask2D rectMask2D;
 
     public static ClueMenu instance;
 
     void Awake()
     {
         instance = this;
+        rectMask2D = clueMenu.GetComponent<RectMask2D>();
     }
 
     // Update is called once per frame
@@ -20,16 +24,17 @@ public class ClueMenu : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Tab))
         {
-            clueMenu.SetActive(!clueMenu.activeSelf);
-            Cursor.visible = clueMenu.activeSelf;
-            Cursor.lockState = clueMenu.activeSelf ? CursorLockMode.None : CursorLockMode.Locked;
-            GetComponent<PlayerMovement>().menuOpen = clueMenu.activeSelf;
+            menuChecker.SetActive(!menuChecker.activeSelf);
+            Cursor.visible = menuChecker.activeSelf;
+            Cursor.lockState = menuChecker.activeSelf ? CursorLockMode.None : CursorLockMode.Locked;
+            rectMask2D.enabled = !menuChecker.activeSelf;
+            GetComponent<PlayerMovement>().menuOpen = menuChecker.activeSelf;
         }
     }
 
     public void CreateClueEntry(string clueName, string clueText)
     {
-        GameObject newClue = Instantiate(Resources.Load("Prefabs/ClueEntry") as GameObject, clueList.transform);
+        GameObject newClue = Instantiate(clueEntryPrefab, clueList.transform);
         newClue.GetComponent<ClueEntry>().SetClueText(clueName, clueText);
     }
 

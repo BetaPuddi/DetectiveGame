@@ -21,7 +21,8 @@ public class Tap : InteractableBase
         switch (used)
         {
             case false:
-                InteractText.instance.SetText("Press E to turn on tap");
+                inspectText = "Press E to turn on tap";
+                InteractText.instance.SetText(inspectText);
                 break;
             case true:
                 InteractText.instance.SetText("");

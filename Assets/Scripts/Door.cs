@@ -14,7 +14,8 @@ public class Door : InteractableBase
     {
         if (!used)
         {
-            InteractText.instance.SetText("Press E to open door");
+            inspectText = "Press E to open door";
+            InteractText.instance.SetText(inspectText);
         }
     }
 

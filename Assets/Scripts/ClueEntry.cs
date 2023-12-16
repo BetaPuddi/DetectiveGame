@@ -5,16 +5,17 @@ using TMPro;
 
 public class ClueEntry : MonoBehaviour
 {
-    public TextMeshProUGUI nameText, descriptionText;
+    public TextMeshProUGUI nameTextTMP, descriptionTextTMP;
+    public string nameText, descriptionText;
 
     public void SetClueText(string clueName, string description)
     {
-        nameText.text = clueName;
-        descriptionText.text = description;
+        nameTextTMP.text = clueName;
+        //descriptionTextTMP.text = description;
     }
 
     public void OnClick()
     {
-        ClueMenu.instance.SetDescriptionText(descriptionText.text);
+        ClueMenu.instance.SetDescriptionText(descriptionText);
     }
 }

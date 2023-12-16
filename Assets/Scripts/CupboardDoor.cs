@@ -35,7 +35,8 @@ public class CupboardDoor : InteractableBase
     {
         if (!used)
         {
-            InteractText.instance.SetText("Press E to open cupboard door");
+            inspectText = "Press E to open cupboard door";
+            InteractText.instance.SetText(inspectText);
         }
     }
 
