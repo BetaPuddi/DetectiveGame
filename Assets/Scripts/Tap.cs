@@ -18,7 +18,17 @@ public class Tap : InteractableBase
 
     public override void OnInspect()
     {
-        InteractText.instance.SetText("Press E to turn on tap");
+        switch (used)
+        {
+            case false:
+                inspectText = "Press E to turn on tap";
+                InteractText.instance.SetText(inspectText);
+                break;
+            case true:
+                InteractText.instance.SetText("");
+                break;
+        }
+
     }
 
     IEnumerator Wait()
@@ -26,5 +36,13 @@ public class Tap : InteractableBase
         yield return new WaitForSeconds(3);
         water.Stop();
         used = false;
+    }
+
+    public override void Think()
+    {
+        if (used)
+        {
+            ThoughtText.instance.SetText(thought);
+        }
     }
 }
