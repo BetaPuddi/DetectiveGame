@@ -11,11 +11,12 @@ public class ClueEntry : MonoBehaviour
     public void SetClueText(string clueName, string description)
     {
         nameTextTMP.text = clueName;
-        //descriptionTextTMP.text = description;
+        descriptionText = description;
     }
 
     public void OnClick()
     {
-        ClueMenu.instance.SetDescriptionText(descriptionText);
+        descriptionTextTMP.text = descriptionText;
+        ClueMenu.instance.SetDescriptionText(descriptionTextTMP.text);
     }
 }

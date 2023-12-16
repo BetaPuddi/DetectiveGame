@@ -36,6 +36,7 @@ public class ClueMenu : MonoBehaviour
     {
         GameObject newClue = Instantiate(clueEntryPrefab, clueList.transform);
         newClue.GetComponent<ClueEntry>().SetClueText(clueName, clueText);
+        newClue.GetComponent<ClueEntry>().descriptionTextTMP = clueDescriptionText;
     }
 
     public void SetDescriptionText(string text)
