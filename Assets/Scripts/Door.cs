@@ -17,4 +17,9 @@ public class Door : InteractableBase
             InteractText.instance.SetText("Press E to open door");
         }
     }
+
+    public override void Think()
+    {
+        ThoughtText.instance.SetText(thought);
+    }
 }

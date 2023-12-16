@@ -39,6 +39,7 @@ public class Highlight : MonoBehaviour
             if (interactable != null)
             {
                 interactable.OnInspect();
+                interactable.Think();
             }
         }
         else //if (hit.transform.gameObject.layer != interactableLayer)
@@ -47,6 +48,7 @@ public class Highlight : MonoBehaviour
             previouslyHitObject = null;
             interactable = null;
             InteractText.instance.SetText("");
+            ThoughtText.instance.SetText("");
         }
     }
 }

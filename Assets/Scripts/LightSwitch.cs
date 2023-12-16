@@ -62,4 +62,9 @@ public class LightSwitch : InteractableBase
             InteractText.instance.SetText("Press E to turn light switch on");
         }
     }
+
+    public override void Think()
+    {
+        ThoughtText.instance.SetText(thought);
+    }
 }

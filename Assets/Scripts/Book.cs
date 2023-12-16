@@ -17,4 +17,9 @@ public class Book : InteractableBase
             InteractText.instance.SetText("Press E to read book");
         }
     }
+
+    public override void Think()
+    {
+        ThoughtText.instance.SetText(thought);
+    }
 }

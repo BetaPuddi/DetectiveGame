@@ -38,4 +38,9 @@ public class CupboardDoor : InteractableBase
             InteractText.instance.SetText("Press E to open cupboard door");
         }
     }
+
+    public override void Think()
+    {
+        ThoughtText.instance.SetText(thought);
+    }
 }

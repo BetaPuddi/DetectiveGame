@@ -27,6 +27,11 @@ public class Curtains : InteractableBase
             InteractText.instance.SetText("Press E to open curtains");
         }
     }
+
+    public override void Think()
+    {
+        ThoughtText.instance.SetText(thought);
+    }
 }
 
 
