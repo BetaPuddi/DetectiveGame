@@ -10,6 +10,7 @@ public class Clue : InteractableBase
     {
         AddClue();
         used = true;
+        ProgressTracker.instance.AddClue();
         //gameObject.SetActive(false);
     }
 
