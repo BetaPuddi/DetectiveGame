@@ -9,6 +9,7 @@ public class PlayerMovement : MonoBehaviour
     public float moveSpeed;
 
     public Transform orientation;
+    public bool menuOpen;
 
     private float horizontalInput;
     private float verticalInput;
@@ -25,18 +26,32 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
-        MyInput();
+        if (!menuOpen)
+        {
+            MyInput();
+        }
+        else
+        {
+            rb.velocity = Vector3.zero;
+        }
     }
 
     private void FixedUpdate()
     {
-        MovePlayer();
+        if (!menuOpen)
+        {
+            MovePlayer();
+        }
+        else
+        {
+            rb.velocity = Vector3.zero;
+        }
     }
 
     private void MyInput()
     {
-        horizontalInput = Input.GetAxisRaw("Horizontal");
-        verticalInput = Input.GetAxisRaw("Vertical");
+            horizontalInput = Input.GetAxisRaw("Horizontal");
+            verticalInput = Input.GetAxisRaw("Vertical");
     }
 
     private void MovePlayer()
